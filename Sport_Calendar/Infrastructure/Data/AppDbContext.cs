@@ -17,6 +17,10 @@ public class AppDbContext : DbContext
         //Defiene where the sport event will take place
         //id_place: primary key 
         //place: Name of the venue where the event takes place
+        //city: City where the venue is located
+        //capacity: Maximum number of spectators the venue can accommodate
+        //ticket_price: Price of the ticket to attend the event at the venue
+        //vip: Indicates whether the venue has VIP areas or services
         b.Entity<Place>(e => {
             e.ToTable("Place");
             e.Property(x => x.Id).HasColumnName("id_place").IsRequired();
@@ -26,7 +30,12 @@ public class AppDbContext : DbContext
             e.Property(x => x.TicketPrice).HasColumnName("ticket_price");
             e.Property(x => x.Vip).HasColumnName("vip");
         });
-        //Sport table
+        //Define different sports of the events
+        //id_sport: primary key
+        //name: Name of the sport
+        //description: Description of the sport, rules, characteristics, etc.
+        //individual: Indicates whether the sport is individual or team-based
+
         b.Entity<Sport>(e => {
             e.ToTable("Sport");
             e.Property(x => x.Id).HasColumnName("id_sport");
@@ -34,7 +43,12 @@ public class AppDbContext : DbContext
             e.Property(x => x.Description).HasColumnName("description");
             e.Property(x => x.Individual).HasColumnName("individual");
         });
-        //Team table
+        //Define different teams participating in the events
+        //id_team: primary key
+        //name: Name of the team or a individual athlete
+        //id_sport: foreign key referencing the Sport table
+        //id_place: foreign key referencing the Place table 
+        
         b.Entity<Team>(e => {
             e.ToTable("Team");
             e.Property(x => x.Id).HasColumnName("id_team");
@@ -46,7 +60,17 @@ public class AppDbContext : DbContext
             e.HasOne(x => x.Place).WithMany(p => p.Teams).HasForeignKey(x => x.PlaceId)
                 .OnDelete(DeleteBehavior.SetNull);
         });
-        //Event table
+        //Define the sports events
+        //id_event: primary key
+        //event_date: Date when the event takes place
+        //event_time: Time when the event takes place
+        //description: Description of the event, details, type of competition, etc.
+        //id_sport: foreign key referencing the Sport table
+        //id_place: foreign key referencing the Place table
+        //local_team: foreign key referencing the Team table for the home team
+        //visit_team: foreign key referencing the Team table for the visiting team
+        
+
         b.Entity<Event>(e => {
             e.ToTable("Event");
             e.Property(x => x.Id).HasColumnName("id_event");
