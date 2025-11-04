@@ -11,7 +11,7 @@ using Sport_Calendar.Application.Repositories;
 using Sport_Calendar.Infrastructure.Repositories;
 using Sport_Calendar.Application.Services;
 
-namespace Prueba.Test;
+namespace Sport_Calendar.Test;
 
 // It ensures that team creation is saved to the database
 // and correctly redirects to the event creation screen.

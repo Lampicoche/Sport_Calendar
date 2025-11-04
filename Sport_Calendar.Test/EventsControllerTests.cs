@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Xunit;
 
 using Sport_Calendar.Controllers;
-using Sport_Calendar.Controllers.Api; // LookupsController
+using Sport_Calendar.Controllers.Api;
 using Sport_Calendar.ViewModels;
 
 using Sport_Calendar.Domain.Models;
@@ -16,7 +16,7 @@ using Sport_Calendar.Application.Services;
 using Sport_Calendar.Application.Dtos;
 using System.Linq;
 
-namespace Prueba.Test;
+namespace Sport_Calendar.Test;
 
 public class EventsControllerTests
 {

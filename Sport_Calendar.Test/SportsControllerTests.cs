@@ -11,7 +11,7 @@ using Sport_Calendar.Infrastructure.Data;
 using Sport_Calendar.Application.Repositories;
 using Sport_Calendar.Infrastructure.Repositories;
 
-namespace Prueba.Test
+namespace Sport_Calendar.Test
 {
     public class SportsControllerTests
     {
