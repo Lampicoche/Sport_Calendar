@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Sports Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+<body>
+    <header style="padding:.75rem 1rem;border-bottom:1px solid #ddd;">
+        <nav style="display:flex;gap:1rem;align-items:center;">
+            <a asp-controller="Events" asp-action="Index" style="font-weight:700;">Sports Calendar</a>
+            <a asp-controller="Events" asp-action="Index">Events</a>
+            <a asp-controller="Events" asp-action="Create">Add Event</a> 
+            <a asp-controller="Events" asp-action="SeeEvent">See event</a>
+
+        </nav>
+    </header>
+    <main class="container">
+        @RenderBody()
+    </main>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

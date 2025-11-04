@@ -1,0 +1,12 @@
+﻿@using Sport_Calendar.Domain.Models
+@model Place
+<h2>New Place</h2>
+<form asp-action="Create" method="post">
+	@Html.AntiForgeryToken()
+	<label>Name <input asp-for="Name" required /></label><br />
+	<label>City <input asp-for="City" /></label><br />
+	<label>Capacity <input asp-for="Capacity" type="number" /></label><br />
+	<label>Ticket price <input asp-for="TicketPrice" type="number" step="0.01" /></label><br />
+	<label>VIP <input asp-for="Vip" type="checkbox" /></label><br />
+	<button type="submit">Save</button>
+</form>

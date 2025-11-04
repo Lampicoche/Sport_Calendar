@@ -1,0 +1,52 @@
+﻿@model Team
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Sport_Calendar.Domain.Models
+@{
+    ViewData["Title"] = "New Team";
+    var sports = (IEnumerable<SelectListItem>)ViewBag.Sports;
+    var places = (IEnumerable<SelectListItem>)ViewBag.Places;
+}
+
+<h2>New Team</h2>
+
+<form asp-action="Create" method="post" class="card"
+      style="max-width:560px;padding:1rem;border:1px solid #ddd;border-radius:.75rem;">
+    @Html.AntiForgeryToken()
+
+    <div style="color:crimson;margin-bottom:.5rem;">
+        @Html.ValidationSummary()
+    </div>
+
+    <label style="display:grid;gap:.25rem;margin:.5rem 0;">
+        Name
+        <input asp-for="Name" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </label>
+
+    <label style="display:grid;gap:.25rem;margin:.5rem 0;">
+        Sport
+      
+            <select asp-for="SportId" asp-items="ViewBag.Sports" required>
+                <option value="">Select sport</option>
+            </select>
+            <span asp-validation-for="SportId" class="text-danger"></span>
+        </label>
+
+
+    <label style="display:grid;gap:.25rem;margin:.5rem 0;">
+        Place
+        <select asp-for="PlaceId" asp-items="places">
+            <option value="">(optional)</option>
+        </select>
+        <span asp-validation-for="PlaceId" class="text-danger"></span>
+    </label>
+
+    <div style="display:flex;gap:.5rem;align-items:center;margin-top:.75rem;">
+        <button type="submit">Save</button>
+        <a asp-controller="Events" asp-action="Create" asp-route-sportId="@Model.SportId">Back to Add Event</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

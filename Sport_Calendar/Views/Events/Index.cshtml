@@ -1,0 +1,44 @@
+﻿@using Sport_Calendar.Domain.Models
+@model Sport_Calendar.ViewModels.EventFilterVm
+@{
+	ViewData["Title"] = "Events";
+	var events = (IEnumerable<Event>)ViewBag.Events;
+}
+<h2>Events</h2>
+<form method="get" asp-action="Index" class="filters"
+	  style="display:flex;gap:.5rem;align-items:center;margin:.5rem 0 1rem;">
+	  <select asp-for="SportId" asp-items="Model.Sports">
+		<option value="">All sports</option>
+	</select>
+	<input asp-for="From" type="date" />
+	<input asp-for="To" type="date" />
+	<button type="submit">Apply</button>
+</form>
+@if (TempData["ok"] != null)
+{
+	 <div style="color:green">@TempData["ok"]</div>
+}
+<table class="table" style="width:100%;border-collapse:collapse;">
+	<thead>
+		<tr style="text-align:left;border-bottom:1px solid #ddd;">
+			<th style="padding:.5rem;">Date</th>
+			<th style="padding:.5rem;">Time</th>
+			<th style="padding:.5rem;">Sport</th>
+			<th style="padding:.5rem;">Match</th>
+			<th style="padding:.5rem;">Place</th>
+			<th style="padding:.5rem;">Description</th>
+		</tr>
+	</thead>
+	<tbody> @foreach (var e in events)
+		{
+			<tr style="border-bottom:1px solid #f0f0f0;"> <td style="padding:.5rem;">@e.EventDate.ToString("yyyy-MM-dd")</td> <td style="padding:.5rem;">@e.EventTime.ToString("HH\\:mm")</td> <td style="padding:.5rem;">@e.Sport?.Name</td> <td style="padding:.5rem;">@(e.LocalTeam?.Name ?? "TBD") vs @(e.VisitTeam?.Name ?? "TBD")</td> <td style="padding:.5rem;">@e.Place?.Name</td> <td style="padding:.5rem;">@e.Description</td> </tr>
+		} @if (!events.Any())
+		{
+			<tr><td colspan="6" style="padding:.5rem;">No events.</td></tr>
+		} </tbody>
+</table>
+
+
+
+
+

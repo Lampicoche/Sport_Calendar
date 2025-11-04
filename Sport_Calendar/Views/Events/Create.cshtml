@@ -1,0 +1,85 @@
+﻿@model Sport_Calendar.ViewModels.EventFormVm
+
+<h2>Add Event</h2>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <!-- Date -->
+    <div class="mb-3">
+        <label asp-for="EventDate" class="form-label">Date</label>
+        <input asp-for="EventDate" type="date" class="form-control" />
+        <span asp-validation-for="EventDate" class="text-danger"></span>
+    </div>
+
+    <!-- Time -->
+    <div class="mb-3">
+        <label asp-for="EventTime" class="form-label">Time</label>
+        <input asp-for="EventTime" type="time" class="form-control" />
+        <span asp-validation-for="EventTime" class="text-danger"></span>
+    </div>
+
+    <!-- Sport (al cambiar recarga la página con sportId) -->
+    <div class="mb-3">
+        <label asp-for="SportId" class="form-label">Sport</label>
+        <div style="display:flex; gap:.5rem; align-items:center;">
+            <select asp-for="SportId" asp-items="Model.Sports" class="form-select"
+                    onchange="window.location.href='@Url.Action("Create","Events")?sportId=' + (this.value || '')">
+                <option value="">Select sport</option>
+            </select>
+            <a asp-controller="Sports" asp-action="Create">+ New sport</a>
+        </div>
+        <span asp-validation-for="SportId" class="text-danger"></span>
+    </div>
+
+    <!-- Place -->
+    <div class="mb-3">
+        <label asp-for="PlaceId" class="form-label">Place</label>
+        <div style="display:flex; gap:.5rem; align-items:center;">
+            <select asp-for="PlaceId" asp-items="Model.Places" class="form-select">
+                <option value="">Select place</option>
+            </select>
+            <a asp-controller="Places" asp-action="Create">+ New place</a>
+        </div>
+        <span asp-validation-for="PlaceId" class="text-danger"></span>
+    </div>
+
+    <!-- Local team -->
+    <div class="mb-3">
+        <label asp-for="LocalTeamId" class="form-label">Local team</label>
+        <div style="display:flex; gap:.5rem; align-items:center;">
+            <select asp-for="LocalTeamId" asp-items="Model.Teams" class="form-select">
+                <option value="">(none)</option>
+            </select>
+            <a asp-controller="Teams" asp-action="Create">+ New team</a>
+        </div>
+        <span asp-validation-for="LocalTeamId" class="text-danger"></span>
+    </div>
+
+    <!-- Visit team -->
+    <div class="mb-3">
+        <label asp-for="VisitTeamId" class="form-label">Visit team</label>
+        <select asp-for="VisitTeamId" asp-items="Model.Teams" class="form-select">
+            <option value="">(none)</option>
+        </select>
+        <span asp-validation-for="VisitTeamId" class="text-danger"></span>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <input asp-for="Description" class="form-control" placeholder="Optional" />
+    </div>
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a class="btn btn-secondary" href="@Url.Action("Create","Events", new { sportId = Model.SportId })">
+            Reload lists
+        </a>
+        <a asp-action="Index" class="btn btn-link">Back to list</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

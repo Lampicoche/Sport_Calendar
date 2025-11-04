@@ -1,0 +1,29 @@
+﻿@model Sport_Calendar.Domain.Models.Event
+@{
+    ViewData["Title"] = "Event details";
+}
+
+@if (ViewBag.PrevId != null && ViewBag.NextId != null)
+{
+    <div style="display:flex;gap:.75rem;align-items:center;margin-bottom:.5rem;">
+        <a asp-action="Details" asp-route-id="@ViewBag.PrevId" title="Previous event"
+           style="text-decoration:none;font-size:1.5rem;">&larr;</a>
+        <span style="opacity:.6;">navigate</span>
+        <a asp-action="Details" asp-route-id="@ViewBag.NextId" title="Next event"
+           style="text-decoration:none;font-size:1.5rem;">&rarr;</a>
+    </div>
+}
+
+<h2>Event details</h2>
+
+<p><strong>Date:</strong> @Model.EventDate</p>
+<p><strong>Time:</strong> @Model.EventTime</p>
+<p><strong>Sport:</strong> @Model.Sport?.Name</p>
+<p><strong>Place:</strong> @Model.Place?.Name</p>
+<p><strong>Local team:</strong> @Model.LocalTeam?.Name</p>
+<p><strong>Visitor team:</strong> @Model.VisitTeam?.Name</p>
+<p><strong>Description:</strong> @Model.Description</p>
+
+<p>
+    <a asp-action="Index">Back to list</a>
+</p>

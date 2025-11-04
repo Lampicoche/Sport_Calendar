@@ -1,0 +1,10 @@
+﻿@using Sport_Calendar.Domain.Models
+@model Sport
+<h2>New Sport</h2>
+<form asp-action="Create" method="post">
+	@Html.AntiForgeryToken()
+	<label>Name <input asp-for="Name" required /></label><br />
+	<label>Description <input asp-for="Description" /></label><br />
+	<label>Individual <input asp-for="Individual" type="checkbox" /></label><br />
+	<button type="submit">Save</button>
+</form>
