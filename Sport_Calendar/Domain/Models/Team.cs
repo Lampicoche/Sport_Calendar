@@ -8,7 +8,7 @@ namespace Sport_Calendar.Domain.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Name is required")]
-        public string Name { get; set; } = null!;
+        public string? Name { get; set; }
 
         [Required(ErrorMessage = "The Sport field is required.")]
         [Display(Name = "Sport")]
@@ -16,7 +16,7 @@ namespace Sport_Calendar.Domain.Models
 
         public int? PlaceId { get; set; }
 
-        [ValidateNever] public Sport? Sport { get; set; }   
-        [ValidateNever] public Place? Place { get; set; }   
+        [ValidateNever] public Sport? Sport { get; set; }
+        [ValidateNever] public Place? Place { get; set; }
     }
 }
