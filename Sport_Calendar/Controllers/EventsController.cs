@@ -1,4 +1,4 @@
-﻿// MVC controller for Events: list/filter, create, details  , and "SeeEvent" shortcut.
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Sport_Calendar.Application.Services;
@@ -8,6 +8,7 @@ using System.Linq;
 
 namespace Sport_Calendar.Controllers;
 
+// MVC controller for Events: list/filter, create, details, and "SeeEvent" shortcut.
 public class EventsController : Controller
 {
     private readonly IEventService _events;
