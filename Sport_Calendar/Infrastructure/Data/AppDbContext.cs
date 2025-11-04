@@ -14,10 +14,12 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder b)
     {
-        //Place table
+        //Defiene where the sport event will take place
+        //id_place: primary key 
+        //place: Name of the venue where the event takes place
         b.Entity<Place>(e => {
             e.ToTable("Place");
-            e.Property(x => x.Id).HasColumnName("id_place");
+            e.Property(x => x.Id).HasColumnName("id_place").IsRequired();
             e.Property(x => x.Name).HasColumnName("place").IsRequired();
             e.Property(x => x.City).HasColumnName("city");
             e.Property(x => x.Capacity).HasColumnName("capacity");
