@@ -1,0 +1,31 @@
+ AI Reflection
+
+First of all, I have been using ChatGPT and CoPilot. These are AI tools I use in the project.
+
+In the beginning of the project I said to ChatGPT, to tell me the different ways to make all the project.
+With the different option that I obtained I chose the best option in my opinion to start working, but simplifying the tools it offered. 
+Because the task was backend-oriented, 
+so I discarded the frontend-related tools to focus more on the backend(I know it wasn't advisable to use a new technology,
+but I wanted to experiment with a new one and learn about it.).
+
+And the final decision is that I make is that I was going to use the IDE Visual Studio 2022 and the Frameworks .NET SDK.
+so you can take advantage of the templates it generates for you.
+Then I created my class diagram and my database, then I told the AI to help me to build the classes faster the classes
+(Copilot starts telling you what to enter if you've already passed the database).
+
+Later I asked for a little project to know how to use that technology. When I learn how to use
+(how to compile, how to properly connect to the database, how to open the page) I start the real project with my own structure for the codes.
+
+As I was building the files, I kept asking for advice on how to do it better, since I didn't have much knowledge of the tool,
+and that way I could create cleaner and faster code.
+
+Finally, once the backend was finished, I ordered it to create the HTML and CSS code 
+(I tried to base it on Sportradar's colors) 
+since I chose the backend and preferred to concentrate on that part and I didn't have enough time,so I didn't look at it much.
+
+I also used it to create comments in the code, since I was unintentionally commenting in Spanish, so I also used it to comment on the code and translate the comments I had already made.
+
+If I had had more time, I would have liked to better comply with coding standards, in addition to having achieved a more robust backend.
+
+
+
